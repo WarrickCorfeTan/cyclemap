@@ -68,8 +68,8 @@ $(function() {
   // Map
 
   window.map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -36.88145857029161, lng: -185.2188491821289},
-    zoom: 12,
+    center: {lat: -36.73522283585339, lng: 174.77256774902344},
+    zoom: 11,
     disableDefaultUI: true,
     zoomControl: true
   });
