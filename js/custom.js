@@ -119,6 +119,9 @@ $(function() {
     if (!window.data) return;
     console.log('rendering');
     var sum = {}
+    for (var l in lines) {
+      sum[l] = 0;
+    }
     for (var i in window.data) {
       var e = window.data[i];
       var day = new Date(e['Date']).getDate();
@@ -126,7 +129,7 @@ $(function() {
         for (var place in e) {
           if (place != 'Date') {
             var amt = parseInt(e[place]);
-            if (!sum[place]) sum[place] = 0;
+            if (isNaN(amt)) continue;
             sum[place] += amt;
           }
         }
