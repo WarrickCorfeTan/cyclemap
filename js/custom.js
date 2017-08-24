@@ -138,7 +138,7 @@ $(function() {
     }
     for (var place in sum) {
       var amt = sum[place];
-      lines[place].setOptions({strokeWeight: amt / 1000});
+      lines[place].setOptions({strokeWeight: amt / 150});
       lines[place].infowindow.setContent(place + ': ' + amt);
     }
   }
