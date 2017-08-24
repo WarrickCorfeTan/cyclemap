@@ -39,12 +39,24 @@ $(function() {
       }
     });
     
+
+
     window.slider.noUiSlider.on('update', function() {
       var values = this.get();
       window.min = values[0];
       window.max = values[1];
+
+
+      dayValue = $('#day-value');
+      if (window.min == window.max) {
+        dayValue.html('Current date: ' + window.max);
+      }
+      else {
+        dayValue.html('Current date range: ' + window.min + ' - ' + window.max);
+      }
       renderData();
     });
+
     
   }
   $('.play').click(function() {
