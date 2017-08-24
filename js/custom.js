@@ -43,16 +43,19 @@ $(function() {
       var values = this.get();
       window.min = values[0];
       window.max = values[1];
+      renderData();
 
-
-      dayValue = $('#day-value');
+      var dayValue = $('#day-value');
       if (window.min == window.max) {
         dayValue.html('Current date: ' + window.max);
       }
       else {
         dayValue.html('Current date range: ' + window.min + ' - ' + window.max);
       }
-      renderData();
+
+      var temperature = $('#temperature');
+      tempArray = [8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,14];
+      temperature.html('Temperature: ' + tempArray[window.min-1]);
     });
     
   }
