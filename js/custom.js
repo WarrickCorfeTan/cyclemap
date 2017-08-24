@@ -38,8 +38,6 @@ $(function() {
         }
       }
     });
-    
-
 
     window.slider.noUiSlider.on('update', function() {
       var values = this.get();
@@ -56,7 +54,6 @@ $(function() {
       }
       renderData();
     });
-
     
   }
   $('.play').click(function() {
