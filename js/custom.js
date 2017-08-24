@@ -20,7 +20,7 @@ $(function() {
   
   function createSlider() {
     noUiSlider.create(window.slider, {
-      start: [ window.range.min, window.range.min+1 ],
+      start: [ window.range.min, window.range.min ],
       step: 1,
       connect: true,
       behaviour: 'tap-drag',
