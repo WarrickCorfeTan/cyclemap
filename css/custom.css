@@ -3,6 +3,7 @@ html, body, #timemap, #map {
   margin: 0;
   width: 100%;
   height: 100%;
+  font-family: arial;
 }
 
 #timemap {
@@ -14,6 +15,7 @@ html, body, #timemap, #map {
   width: 80%;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 1rem; /* Added padding for bottom text */
   text-align: center;
   z-index: 1000;
   background:rgba(255,255,255,.7);
@@ -28,4 +30,8 @@ html, body, #timemap, #map {
 
 .dataTable tbody tr {
   cursor: pointer;
+}
+
+#day-value {
+  padding-top: 1rem;
 }

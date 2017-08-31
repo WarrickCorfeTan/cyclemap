@@ -39,23 +39,62 @@ $(function() {
       }
     });
 
+      function findOrdinal(sliderValue) {
+        switch (sliderValue) {
+          case 1:
+          ordinal = "st"
+          break;
+        case 2:
+          ordinal = "nd"
+          break;
+        case 3:
+          ordinal = "rd"
+          break;
+        default:
+          ordinal = "th"
+        }
+
+        return ordinal;
+      }
+
     window.slider.noUiSlider.on('update', function() {
       var values = this.get();
       window.min = values[0];
       window.max = values[1];
       renderData();
 
+      var min_ordinal = findOrdinal(window.min);
+      var max_ordinal = findOrdinal(window.max);
+
+
       var dayValue = $('#day-value');
       if (window.min == window.max) {
-        dayValue.html('Current date: ' + window.max);
+        dayValue.html(window.max + max_ordinal + " of July");
       }
       else {
-        dayValue.html('Current date range: ' + window.min + ' - ' + window.max);
+        dayValue.html(window.min + min_ordinal + ' - ' + window.max + max_ordinal + " of July");
       }
 
       var temperature = $('#temperature');
-      tempArray = [8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,14];
-      temperature.html('Temperature: ' + tempArray[window.min-1]);
+      var tempArray = [8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,14];
+      var tempDay = tempArray[window.min-1];
+
+      var temp_sum = 0;
+      for (var i in tempArray){
+        temp_sum += tempArray[i];
+      }
+      var tempAv = temp_sum / tempArray.length;
+      //todo: need to round temp_av possibly
+
+      test_string = ""
+      if (tempDay > tempAv) {
+        test_string = '<img id="temp-icon" src="assets/images/hot-icon.png" width="32" height="32" />';
+      }
+      if (tempDay < tempAv) {
+        test_string ='<img id="temp-icon" src="assets/images/cold-icon.png" width="32" height="32" align="bottom" />';
+      }
+      //temperature.html('Temperature: ' + tempDay + test_string);
+      temperature.html("The temperature: " + tempDay + " " + test_string);
     });
     
   }
@@ -67,7 +106,7 @@ $(function() {
           window.max = window.min // go back to start
         }
         window.slider.noUiSlider.set([window.min+1, window.max+1]);
-      }, 1000);
+      }, 500);
       $('.play i').text('pause');
     } else {
       clearInterval(window.t);
