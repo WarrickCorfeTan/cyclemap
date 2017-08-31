@@ -106,7 +106,7 @@ $(function() {
           window.max = window.min // go back to start
         }
         window.slider.noUiSlider.set([window.min+1, window.max+1]);
-      }, 500);
+      }, 1000);
       $('.play i').text('pause');
     } else {
       clearInterval(window.t);
