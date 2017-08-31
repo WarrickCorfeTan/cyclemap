@@ -94,7 +94,7 @@ $(function() {
         test_string ='<img id="temp-icon" src="assets/images/cold-icon.png" width="32" height="32" align="bottom" />';
       }
       //temperature.html('Temperature: ' + tempDay + test_string);
-      temperature.html("The temperature: " + tempDay + " " + test_string);
+      temperature.html("Temperature (Celsius): " + tempDay + " " + test_string);
     });
     
   }
@@ -104,6 +104,9 @@ $(function() {
         if (window.range['max'] == window.max) {
           window.min=0
           window.max = window.min // go back to start
+          //testing pause aftger each cycle
+          clearInterval(window.t);
+          //test end: works.
         }
         window.slider.noUiSlider.set([window.min+1, window.max+1]);
       }, 1000);
