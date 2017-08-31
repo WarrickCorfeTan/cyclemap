@@ -15,6 +15,7 @@ html, body, #timemap, #map {
   width: 80%;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 1rem; /* Added padding for bottom text */
   text-align: center;
   z-index: 1000;
   background:rgba(255,255,255,.7);
