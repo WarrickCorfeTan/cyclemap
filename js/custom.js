@@ -106,6 +106,8 @@ $(function() {
           window.max = window.min // go back to start
           //testing pause aftger each cycle
           clearInterval(window.t);
+          window.t = false;
+          $('.play i').text('play_arrow');
           //test end: works.
         }
         window.slider.noUiSlider.set([window.min+1, window.max+1]);
