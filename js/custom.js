@@ -54,8 +54,25 @@ $(function() {
       }
 
       var temperature = $('#temperature');
-      tempArray = [8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,14];
-      temperature.html('Temperature: ' + tempArray[window.min-1]);
+      var tempArray = [8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,8, 10, 16, 20, 12,14];
+      var tempDay = tempArray[window.min-1];
+
+      var temp_sum = 0;
+      for (var i in tempArray){
+        temp_sum += tempArray[i];
+      }
+      var tempAv = temp_sum / tempArray.length;
+      //todo: need to round temp_av possibly
+
+      test_string = ""
+      if (tempDay > tempAv) {
+        test_string = '<img id="temp-icon" src="assets/images/cold-icon.png" width="32" height="32" />';
+      }
+      if (tempDay < tempAv) {
+        test_string ='<img id="temp-icon" src="assets/images/hot-icon.png" width="32" height="32" align="bottom" />';
+      }
+      //temperature.html('Temperature: ' + tempDay + test_string);
+      temperature.html("The temperature: " + tempDay + " " + test_string);
     });
     
   }
@@ -67,7 +84,7 @@ $(function() {
           window.max = window.min // go back to start
         }
         window.slider.noUiSlider.set([window.min+1, window.max+1]);
-      }, 1000);
+      }, 500);
       $('.play i').text('pause');
     } else {
       clearInterval(window.t);
